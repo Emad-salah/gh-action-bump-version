@@ -55,6 +55,10 @@ Toolkit.run(async tools => {
       version = null
     }
   }
+  
+  if (!event.commits) {
+    version = process.env['INPUT_DEFAULT'] || 'patch';
+  }
 
   if (version === null) {
     tools.exit.success('No version keywords found, skipping bump.')
